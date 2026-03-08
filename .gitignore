@@ -12,9 +12,6 @@ __pycache__/
 *.pyo
 .pytest_cache/
 
-# Dane i wykresy (generowane lokalnie)
-plots/
-
 # macOS
 .DS_Store
 

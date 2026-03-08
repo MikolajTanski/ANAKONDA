@@ -6,45 +6,68 @@ Wszystkie wykresy generowane są do katalogu `plots/` po uruchomieniu `python ma
 
 ## Lab 6 – Pandas + Matplotlib
 
-### 01_price_distribution.png
-Histogram rozkładu cen ogłoszeń (w tys. PLN). Pokazuje, że większość mieszkań wyceniona jest między 300k a 900k PLN, z długim ogonem w stronę droższych nieruchomości.
+### Rozkład cen ogłoszeń
+![price distribution](plots/01_price_distribution.png)
+Większość mieszkań wyceniona jest między 300k a 900k PLN, z długim ogonem w stronę droższych nieruchomości.
 
-### 02_price_per_m2_by_city.png
-Poziomy wykres słupkowy – mediana ceny za m² dla 10 najdroższych miast w Polsce. Pozwala szybko porównać rynki lokalne.
+---
 
-### 03_area_vs_price.png
-Wykres punktowy: powierzchnia (m²) vs cena (tys. PLN). Punkty kolorowane wg ceny za m² (żółty = tani, czerwony = drogi). Widoczna liniowa korelacja z wyraźnym rozrzutem dla lokalizacji premium.
+### Mediana ceny za m² – top 10 miast
+![price per m2 by city](plots/02_price_per_m2_by_city.png)
+Porównanie mediany ceny za m² dla 10 najdroższych rynków lokalnych w Polsce.
 
-### 04_rooms_distribution.png
-Wykres słupkowy liczby ogłoszeń wg liczby pokoi. Dominują mieszkania 2- i 3-pokojowe.
+---
 
-### 05_price_by_rooms.png
-Wykres pudełkowy (box plot) ceny wg liczby pokoi (1–4). Obrazuje mediany i rozrzut cen w każdej kategorii bez wartości odstających.
+### Powierzchnia a cena
+![area vs price](plots/03_area_vs_price.png)
+Wykres punktowy z kolorowaniem wg ceny za m² (żółty = tani, czerwony = drogi). Widoczna liniowa korelacja z rozrzutem dla lokalizacji premium.
+
+---
+
+### Rozkład liczby pokoi
+![rooms distribution](plots/04_rooms_distribution.png)
+Dominują mieszkania 2- i 3-pokojowe.
+
+---
+
+### Cena wg liczby pokoi (box plot)
+![price by rooms](plots/05_price_by_rooms.png)
+Mediany i rozrzut cen w każdej kategorii pokoi, bez wartości odstających.
 
 ---
 
 ## Lab 5 – Text Mining + Word Cloud
 
-### 06_wordcloud.png
-Chmura słów wygenerowana z tytułów ogłoszeń po usunięciu stop words. Dominują: *mieszkanie*, *pokoje*, *balkon*, *centrum*, *apartament*.
+### Word Cloud
+![wordcloud](plots/06_wordcloud.png)
+Chmura słów z tytułów ogłoszeń po usunięciu stop words. Dominują: *mieszkanie*, *pokoje*, *balkon*, *centrum*, *apartament*.
 
-### 07_top_words.png
-Poziomy wykres słupkowy – 30 najczęściej występujących słów w tytułach ogłoszeń.
+---
 
-### 08_top_bigrams.png
-20 najczęstszych bigramów (par słów) w tytułach, np. *"pokojowe mieszkanie"*, *"bez prowizji"*, *"mieszkanie balkon"*.
+### Top 30 słów
+![top words](plots/07_top_words.png)
+Najczęściej występujące słowa w tytułach ogłoszeń.
+
+---
+
+### Top 20 bigramów
+![top bigrams](plots/08_top_bigrams.png)
+Najczęstsze pary słów, np. *"pokojowe mieszkanie"*, *"bez prowizji"*, *"mieszkanie balkon"*.
 
 ---
 
 ## Lab 4 – Uczenie maszynowe
 
-Modele przewidują cenę mieszkania na podstawie cech: powierzchnia, liczba pokoi, piętro, wskaźnik cenowy miasta, prywatny/agencja.
+Modele przewidują cenę mieszkania na podstawie: powierzchnia, liczba pokoi, piętro, wskaźnik cenowy miasta, prywatny/agencja.
 
-### 09_actual_vs_predicted.png
-Trzy wykresy punktowe (jeden na model) porównujące rzeczywistą cenę z przewidywaną. Im bliżej czerwonej linii 45°, tym lepszy model. Widać, że Random Forest radzi sobie najlepiej.
+### Rzeczywista vs przewidywana cena
+![actual vs predicted](plots/09_actual_vs_predicted.png)
+Im bliżej czerwonej linii 45°, tym lepszy model. Random Forest radzi sobie najlepiej.
 
-### 10_model_comparison.png
-Porównanie trzech modeli (Linear Regression, Random Forest, Gradient Boosting) na dwóch metrykach: MAE (błąd bezwzględny w tys. PLN) oraz R² (dopasowanie modelu, im bliżej 1 tym lepiej).
+---
+
+### Porównanie modeli
+![model comparison](plots/10_model_comparison.png)
 
 | Model | MAE | R² |
 |---|---|---|
@@ -52,5 +75,8 @@ Porównanie trzech modeli (Linear Regression, Random Forest, Gradient Boosting) 
 | Random Forest | ~178k PLN | 0.69 |
 | Gradient Boosting | ~183k PLN | 0.63 |
 
-### 11_feature_importance.png
-Ważność cech dla najlepszego modelu (Random Forest). Pokazuje, które zmienne najbardziej wpływają na przewidywaną cenę — dominuje powierzchnia i poziom cenowy miasta.
+---
+
+### Ważność cech (Random Forest)
+![feature importance](plots/11_feature_importance.png)
+Powierzchnia i poziom cenowy miasta mają największy wpływ na przewidywaną cenę.
