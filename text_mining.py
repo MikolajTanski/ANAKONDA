@@ -9,8 +9,7 @@ import re
 from collections import Counter
 
 import pandas as pd
-import matplotlib
-matplotlib.use("Agg")
+import matplotlib; matplotlib.use("Agg")  # noqa: E702
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 

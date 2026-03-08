@@ -20,6 +20,6 @@ class MongoStorage:
         """Upsert po polu id. Zwraca (inserted, updated)."""
         if not listings:
             return 0, 0
-        ops = [UpdateOne({"id": l["id"]}, {"$set": l}, upsert=True) for l in listings]
+        ops = [UpdateOne({"id": doc["id"]}, {"$set": doc}, upsert=True) for doc in listings]
         result = self.collection.bulk_write(ops, ordered=False)
         return result.upserted_count, result.modified_count

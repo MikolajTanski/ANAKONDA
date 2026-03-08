@@ -7,8 +7,7 @@ import logging
 import os
 
 import pandas as pd
-import matplotlib
-matplotlib.use("Agg")
+import matplotlib; matplotlib.use("Agg")  # noqa: E702
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
