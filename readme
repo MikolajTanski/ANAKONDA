@@ -1,0 +1,96 @@
+# ANAKONDA – Scraper Otodom + Analiza Danych
+
+Projekt scrapuje ogłoszenia sprzedaży mieszkań z serwisu [Otodom](https://www.otodom.pl) i przeprowadza na nich pełną analizę danych: statystyki, wizualizacje, text mining oraz predykcję cen metodami uczenia maszynowego.
+
+Dane pobierane są automatycznie przez HTTP (bez Selenium) — strony Otodom oparte są na Next.js, więc wszystkie dane ogłoszeń dostępne są jako JSON wbudowany w HTML (`__NEXT_DATA__`). Requesty wysyłane są z nagłówkami imitującymi prawdziwą przeglądarkę oraz losowymi opóźnieniami między stronami. Pobrane rekordy zapisywane są do lokalnej bazy MongoDB z zabezpieczeniem przed duplikatami (upsert po `id` ogłoszenia).
+
+Projekt zaliczeniowy obejmujący Labs 1–6:
+- **Lab 1** – NoSQL (MongoDB)
+- **Lab 2** – Web Scraping (Otodom)
+- **Lab 3** – Programowanie obiektowe (klasy, moduły)
+- **Lab 4** – Uczenie maszynowe (regresja ceny)
+- **Lab 5** – Text Mining + Word Cloud
+- **Lab 6** – Pandas + Matplotlib
+
+---
+
+## Środowisko
+
+Środowisko conda: `moj_projekt`
+
+```bash
+conda activate moj_projekt
+```
+
+Instalacja zależności:
+
+```bash
+pip install requests beautifulsoup4 pymongo pandas matplotlib scikit-learn wordcloud
+```
+
+Eksport/import środowiska:
+
+```bash
+conda env export > environment.yml
+conda env create -f environment.yml
+```
+
+---
+
+## Baza danych
+
+MongoDB musi działać przed uruchomieniem projektu:
+
+```bash
+brew services start mongodb/brew/mongodb-community
+```
+
+Dane trafiają do: `Scrapper.otodom_listings` (`mongodb://127.0.0.1:27017`)
+
+---
+
+## Uruchomienie
+
+Pełny pipeline (scraping + analiza):
+
+```bash
+python main.py
+```
+
+Tylko analiza na danych już w bazie:
+
+```bash
+python main.py --skip-scraping
+```
+
+Wykresy zapisywane są do katalogu `plots/` (11 plików PNG).
+
+Opis wszystkich wykresów i wyników: [readme_wyniki.md](readme_wyniki.md)
+
+---
+
+## Struktura projektu
+
+```
+main.py          – punkt wejścia, orkiestracja pipeline'u
+config.py        – konfiguracja (URL, MongoDB, delays, limity)
+fetcher.py       – pobieranie stron HTTP (sesja z nagłówkami przeglądarki)
+parser.py        – parsowanie __NEXT_DATA__ (Next.js JSON) → dokumenty
+storage.py       – zapis do MongoDB (upsert po id)
+scraper.py       – pętla paginacji z losowymi opóźnieniami
+analysis.py      – Lab 6: statystyki, 5 wykresów matplotlib
+text_mining.py   – Lab 5: częstotliwość słów, bigramy, word cloud
+ml.py            – Lab 4: LinearRegression / RandomForest / GradientBoosting
+```
+
+---
+
+## Conda – przydatne komendy
+
+```bash
+conda env list                                    # lista środowisk
+conda deactivate                                  # wyjście ze środowiska
+conda create --name moj_projekt_backup --clone moj_projekt  # backup
+conda remove --name moj_projekt --all -y          # usunięcie środowiska
+conda clean --all -y                              # zwolnienie miejsca
+```

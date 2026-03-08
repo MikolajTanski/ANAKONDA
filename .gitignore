@@ -1,0 +1,27 @@
+# Claude
+.claude/
+CLAUDE.md
+
+# Conda
+environment.yml
+.conda/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Dane i wykresy (generowane lokalnie)
+plots/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# env
+.env
+.environment
