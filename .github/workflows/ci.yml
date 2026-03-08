@@ -19,7 +19,7 @@ jobs:
           cache: pip
 
       - name: Zainstaluj zależności
-        run: pip install requests beautifulsoup4 pymongo pandas matplotlib scikit-learn wordcloud flake8
+        run: pip install -r requirements.txt flake8
 
       - name: Flake8
         run: flake8 . --max-line-length=120 --exclude=.git,__pycache__
@@ -36,7 +36,7 @@ jobs:
           cache: pip
 
       - name: Zainstaluj zależności
-        run: pip install requests beautifulsoup4 pymongo pandas matplotlib scikit-learn wordcloud
+        run: pip install -r requirements.txt
 
       - name: Sprawdź importy wszystkich modułów
         run: |
